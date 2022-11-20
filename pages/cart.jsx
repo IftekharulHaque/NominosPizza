@@ -30,7 +30,7 @@ const Cart = () => {
           currency: currency,
         },
       });
-    }, [currency, showSpinner]);
+    }, [cnurrency, showSpinner]);
 
     return (
       <>
