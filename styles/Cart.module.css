@@ -112,3 +112,24 @@
     width: 100%;
   }
 }
+.paymentMethods{
+margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.payButton{
+  padding: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: red;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+
+
+  
+}
+.payButton:hover{
+  background-color: #d1411e;
+}
