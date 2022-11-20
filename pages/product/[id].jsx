@@ -2,11 +2,12 @@ import styles from "../../styles/Product.module.css";
 import Image from "next/image";
 import { useState } from "react";
 import axios from "axios";
+import { set } from "mongoose";
 
 const Product = ({ pizza }) => {
   const [price, setPrice] = useState(pizza.prices[0]);
   const [size, setSize] = useState(0);
-  const [quantiry, setquantiry] = useState(1)
+  // const [quantiry, setquantiry] = useState(1)
   const [extras, setextras] = useState([]);
 
   const changeprice = (number) => {
@@ -23,7 +24,7 @@ const Product = ({ pizza }) => {
     const checked = e.target.checked;
     if (checked) {
       changeprice(option.price);
-      setPrice((prev) => [...prev, option]);
+      setextras((prev) => [...prev, option]);
     } else {
       changeprice(-option.price);
       setextras(extras.filter((extras) => extras._id !== option._id));
