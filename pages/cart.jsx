@@ -1,6 +1,7 @@
 import styles from "../styles/Cart.module.css";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
+
 import { useEffect, useState } from "react";
 import {
   PayPalScriptProvider,
@@ -10,31 +11,27 @@ import {
 import axios from "axios";
 import { useRouter } from "next/router";
 import { reset } from "../redux/cartSlice";
-
-
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [open, setOpen] = useState(false);
-  const [cash, setCash] = useState(false);
   const amount = cart.total;
   const currency = "USD";
   const style = { layout: "vertical" };
   const dispatch = useDispatch();
   const router = useRouter();
-
   const createOrder = async (data) => {
     try {
-      const res = await axios.post("http://localhost:3000/api/orders", data);
-      if (res.status === 201) {
-        dispatch(reset());
-        router.push(`/orders/${res.data._id}`);
-      }
+      const res = axios.post("http://localhost:3000/api/orders", data);
+      
+
+      res.status === 200 && router.push("/orders/" + (await res.data)._id);
+      console.log( res.data._id);
+      dispatch(reset());
     } catch (err) {
       console.log(err);
     }
   };
 
-  // Custom component to wrap the PayPalButtons and handle currency changes
   const ButtonWrapper = ({ currency, showSpinner }) => {
     // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
     // This is the main reason to wrap the PayPalButtons in a new component
