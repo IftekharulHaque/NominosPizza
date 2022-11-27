@@ -6,19 +6,17 @@ const handler = async (req, res) => {
     method,
     query: { id },
   } = req;
-
+    await dbConnect();
   if (method === "GET") {
     try {
-      await dbConnect();
-      const orders = await Order.find({});
-      res.status(200).json({ success: true, data: orders });
+      const order = await Order.findById(id);
+      res.status(200).json(order);
     } catch (error) {
-      res.status(400).json({ success: false });
+      res.status(500).json(error);
     }
   }
   if (method === "PUT") {
     try {
-      await dbConnect();
       const order = await Order.findByIdAndUpdate;
     } catch (error) {
       res.status(200).json({ success: false });
