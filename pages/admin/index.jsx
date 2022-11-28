@@ -94,6 +94,7 @@ const Index = ({ orders, products }) => {
             </tr>
           </tbody>
           {orderList.map((order) => (
+            
             <tbody key={order._id}>
               <tr className={styles.trTitle}>
                 <td>{order._id.slice(0, 5)}...</td>
@@ -111,7 +112,9 @@ const Index = ({ orders, products }) => {
                 
               </tr>
             </tbody>
+            
           ))}
+          
         </table>
       </div>
     </div>
