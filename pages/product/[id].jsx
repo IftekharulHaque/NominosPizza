@@ -1,7 +1,7 @@
 import styles from "../../styles/Product.module.css";
 import Image from "next/image";
 import { useState } from "react";
-import axios from "axios";
+import axios from "../../library/axios";
 import { set } from "mongoose";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../redux/cartSlice";
@@ -34,7 +34,7 @@ const Product = ({ pizza }) => {
   };
 
   const handleClick = () => {
-    dispatch(addProduct({...pizza,extras,price,quantity}))
+    dispatch(addProduct({ ...pizza, extras, price, quantity }));
   };
   return (
     <div className={styles.container}>
@@ -95,9 +95,7 @@ const Product = ({ pizza }) => {
   );
 };
 export const getServerSideProps = async ({ params }) => {
-  const res = await axios.get(
-    `http://localhost:3000/api/products/${params.id}`
-  );
+  const res = await axios.get(`/api/products/${params.id}`);
   return {
     props: {
       pizza: res.data,

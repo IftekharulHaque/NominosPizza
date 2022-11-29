@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     query: { id },
   } = req;
 
-  const token = cookies.token;
+  const token = req.cookies.token;
   dbConnect();
 
   if (method === "GET") {
@@ -19,8 +19,8 @@ export default async function handler(req, res) {
     }
   }
   if (method === "PUT") {
-    if(!token || token!==process.env.TOKEN){
-      return res.status(401).json("unauthorized")
+    if (!token || token !== process.env.TOKEN) {
+      return res.status(401).json("unauthorized");
     }
     try {
       const product = await Product.create(req.body);
@@ -30,8 +30,8 @@ export default async function handler(req, res) {
     }
   }
   if (method === "DELETE") {
-    if(!token || token!==process.env.TOKEN){
-      return res.status(401).json("unauthorized")
+    if (!token || token !== process.env.TOKEN) {
+      return res.status(401).json("unauthorized");
     }
     try {
       const product = await Product.findByIdAndDelete(id);
