@@ -47,6 +47,7 @@ const Cart = () => {
           currency: currency,
         },
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currency, showSpinner]);
 
     return (

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://nominos-pizza.vercel.app",
+  baseURL: process.env.APP_PORT,
   
-//   withCredentials: true,
+  withCredentials: true,
 });
