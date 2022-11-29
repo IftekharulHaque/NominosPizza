@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const api = axios.create({
+export default axios.create({
   baseURL: "https://nominos-pizza.vercel.app",
   withCredentials: true,
 });
-
-export default api;

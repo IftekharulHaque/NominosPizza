@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "../styles/Add.module.css";
-import axios from "axios";
+import axios from "../library/axios";
 import { useRouter } from "next/router";
 
 const Add = ({ setClose }) => {

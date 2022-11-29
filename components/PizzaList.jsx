@@ -1,4 +1,3 @@
-
 import styles from "../styles/PizzaList.module.css";
 import PizzaCard from "./PizzaCard";
 
@@ -12,9 +11,11 @@ const PizzaList = ({ pizzaList }) => {
         sit amet, consectetur adipiscing elit.
       </p>
       <div className={styles.wrapper}>
-        {pizzaList.map((pizza) => (
-          <PizzaCard key={pizza._id} pizza={pizza} />
-        ))}
+        {pizzaList
+          ? pizzaList.map((pizza) => (
+              <PizzaCard key={pizza._id} pizza={pizza} />
+            ))
+          : null}
       </div>
     </div>
   );
