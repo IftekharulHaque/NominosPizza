@@ -6,25 +6,29 @@ const handler = async (req, res) => {
     method,
     query: { id },
   } = req;
-    await dbConnect();
+
+  await dbConnect();
+
   if (method === "GET") {
     try {
       const order = await Order.findById(id);
       res.status(200).json(order);
-    } catch (error) {
-      res.status(500).json(error);
+    } catch (err) {
+      res.status(500).json(err);
     }
   }
   if (method === "PUT") {
     try {
-      const order = await Order.findByIdAndUpdate;
-    } catch (error) {
-      res.status(200).json({ success: false });
+      const order = await Order.findByIdAndUpdate(id, req.body, {
+        new: true,
+      });
+      res.status(200).json(order);
+    } catch (err) {
+      res.status(500).json(err);
     }
   }
   if (method === "DELETE") {
-    try {
-    } catch (error) {}
   }
 };
+
 export default handler;
